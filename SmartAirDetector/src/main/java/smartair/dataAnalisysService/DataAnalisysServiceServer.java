@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.logging.Logger;
 
 import smartair.dataAnalisysService.dataAnalisysServiceGrpc.dataAnalisysServiceImplBase;
+import smartair.dataAnalisysService.dataAnalysis;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
@@ -13,7 +14,7 @@ import io.grpc.stub.StreamObserver;
 public class DataAnalisysServiceServer extends dataAnalisysServiceImplBase  {
 
 	private static final Logger logger = Logger.getLogger(DataAnalisysServiceServer.class.getName());
-
+    public dataAnalysis dataanal = new dataAnalysis();
 	public static void main(String[] args) {
 		
 		DataAnalisysServiceServer dataServer = new DataAnalisysServiceServer();
@@ -47,12 +48,10 @@ public class DataAnalisysServiceServer extends dataAnalisysServiceImplBase  {
 	public void getData(getDataRequest request,  StreamObserver<getDataResponse> responseObserver) {
 		    
 		System.out.println("sending air data");
+		smartair.sensorService.getDataResponse response = dataanal.getdatafromsensor(request.getTimeStamp());
 		
-		double currentTimeStamp = 35;
-		double fromTimeStamp = 10;
-		float coReading = 120;
 		
-		 getDataResponse reply = getDataResponse.newBuilder().setFromTimeStamp(fromTimeStamp).setCurrentTimeStamp(currentTimeStamp).setCoReading(coReading).build();
+		 getDataResponse reply = getDataResponse.newBuilder().setFromTimeStamp(response.getFromTimeStamp()).setCoReading(response.getCoReading()).build();
 	     
 		 responseObserver.onNext(reply);
 	     

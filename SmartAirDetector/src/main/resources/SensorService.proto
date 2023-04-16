@@ -10,6 +10,7 @@ option java_outer_classname = "sensorServiceImpl";
 service sensorService {
   
   rpc inputData(inputDataRequest) returns (inputDataResponse) {}
+  rpc getData(getDataRequest) returns (getDataResponse) {}
     
 }
 
@@ -25,4 +26,16 @@ message inputDataRequest {
 
 message inputDataResponse {
   bool dataRegistred = 1;
+}
+
+message getDataRequest {
+  //time of data detection
+  double timeStamp = 1;  
+}
+
+message getDataResponse {
+  //last timestamp of data 
+  double fromTimeStamp = 1;
+  //COemission detected
+  float coReading = 2; 
 }

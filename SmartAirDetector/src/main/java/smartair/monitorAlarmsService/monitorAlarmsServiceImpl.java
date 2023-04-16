@@ -24,6 +24,11 @@ public final class monitorAlarmsServiceImpl {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_smartair_monitorAlarmsService_setThresholdResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_smartair_monitorAlarmsService_alertMonitorResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_smartair_monitorAlarmsService_alertMonitorResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -36,13 +41,17 @@ public final class monitorAlarmsServiceImpl {
       "\n\032MonitorAlarmsService.proto\022\035smartair.m" +
       "onitorAlarmsService\"(\n\023setThresholdReque" +
       "st\022\021\n\tthreshold\030\001 \001(\002\",\n\024setThresholdRes" +
-      "ponse\022\024\n\014thresholdSet\030\001 \001(\0102\221\001\n\024monitorA" +
-      "larmsService\022y\n\014setThreshold\0222.smartair." +
-      "monitorAlarmsService.setThresholdRequest" +
-      "\0323.smartair.monitorAlarmsService.setThre" +
-      "sholdResponse\"\000B;\n\035smartair.monitorAlarm" +
-      "sServiceB\030monitorAlarmsServiceImplP\001b\006pr" +
-      "oto3"
+      "ponse\022\024\n\014thresholdSet\030\001 \001(\010\",\n\024alertMoni" +
+      "torResponse\022\024\n\014alertMessage\030\001 \001(\0102\221\002\n\024mo" +
+      "nitorAlarmsService\022y\n\014setThreshold\0222.sma" +
+      "rtair.monitorAlarmsService.setThresholdR" +
+      "equest\0323.smartair.monitorAlarmsService.s" +
+      "etThresholdResponse\"\000\022~\n\021startAlertMonit" +
+      "or\0222.smartair.monitorAlarmsService.setTh" +
+      "resholdRequest\0323.smartair.monitorAlarmsS" +
+      "ervice.alertMonitorResponse\"\000B;\n\035smartai" +
+      "r.monitorAlarmsServiceB\030monitorAlarmsSer" +
+      "viceImplP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -68,6 +77,12 @@ public final class monitorAlarmsServiceImpl {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_smartair_monitorAlarmsService_setThresholdResponse_descriptor,
         new java.lang.String[] { "ThresholdSet", });
+    internal_static_smartair_monitorAlarmsService_alertMonitorResponse_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_smartair_monitorAlarmsService_alertMonitorResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_smartair_monitorAlarmsService_alertMonitorResponse_descriptor,
+        new java.lang.String[] { "AlertMessage", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -5,6 +5,7 @@ package smartair.sensorService;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+
 import smartair.sensorService.Datastore;
 import smartair.sensorService.sensorServiceGrpc.sensorServiceImplBase;
 import io.grpc.Server;
@@ -51,9 +52,23 @@ public class SensorServiceServer extends sensorServiceImplBase  {
 		System.out.println("receiving air data");
 		
          
-		datastore.setcoreading(request.getCoReading());
+		datastore.setCoReading(request.getCoReading());
 		datastore.setTimestamp(request.getCurrentTimeStamp());
 		 inputDataResponse reply = inputDataResponse.newBuilder().setDataRegistred(true).build();
+	     
+		 responseObserver.onNext(reply);
+	     
+	     responseObserver.onCompleted();
+	}
+	
+	@Override
+	public void getData(getDataRequest request,  StreamObserver<getDataResponse> responseObserver) {
+		    
+		System.out.println("sending air data");
+		
+		
+		
+		 getDataResponse reply = getDataResponse.newBuilder().setFromTimeStamp(datastore.getTimeStamp()).setCoReading(datastore.getCoReading()).build();
 	     
 		 responseObserver.onNext(reply);
 	     

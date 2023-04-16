@@ -62,6 +62,38 @@ public final class sensorServiceGrpc {
      return getInputDataMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<smartair.sensorService.getDataRequest,
+      smartair.sensorService.getDataResponse> getGetDataMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "getData",
+      requestType = smartair.sensorService.getDataRequest.class,
+      responseType = smartair.sensorService.getDataResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<smartair.sensorService.getDataRequest,
+      smartair.sensorService.getDataResponse> getGetDataMethod() {
+    io.grpc.MethodDescriptor<smartair.sensorService.getDataRequest, smartair.sensorService.getDataResponse> getGetDataMethod;
+    if ((getGetDataMethod = sensorServiceGrpc.getGetDataMethod) == null) {
+      synchronized (sensorServiceGrpc.class) {
+        if ((getGetDataMethod = sensorServiceGrpc.getGetDataMethod) == null) {
+          sensorServiceGrpc.getGetDataMethod = getGetDataMethod = 
+              io.grpc.MethodDescriptor.<smartair.sensorService.getDataRequest, smartair.sensorService.getDataResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "smartair.sensorService.sensorService", "getData"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  smartair.sensorService.getDataRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  smartair.sensorService.getDataResponse.getDefaultInstance()))
+                  .setSchemaDescriptor(new sensorServiceMethodDescriptorSupplier("getData"))
+                  .build();
+          }
+        }
+     }
+     return getGetDataMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -99,6 +131,13 @@ public final class sensorServiceGrpc {
       asyncUnimplementedUnaryCall(getInputDataMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void getData(smartair.sensorService.getDataRequest request,
+        io.grpc.stub.StreamObserver<smartair.sensorService.getDataResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(getGetDataMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -108,6 +147,13 @@ public final class sensorServiceGrpc {
                 smartair.sensorService.inputDataRequest,
                 smartair.sensorService.inputDataResponse>(
                   this, METHODID_INPUT_DATA)))
+          .addMethod(
+            getGetDataMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                smartair.sensorService.getDataRequest,
+                smartair.sensorService.getDataResponse>(
+                  this, METHODID_GET_DATA)))
           .build();
     }
   }
@@ -140,6 +186,14 @@ public final class sensorServiceGrpc {
       asyncUnaryCall(
           getChannel().newCall(getInputDataMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void getData(smartair.sensorService.getDataRequest request,
+        io.grpc.stub.StreamObserver<smartair.sensorService.getDataResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getGetDataMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -168,6 +222,13 @@ public final class sensorServiceGrpc {
     public smartair.sensorService.inputDataResponse inputData(smartair.sensorService.inputDataRequest request) {
       return blockingUnaryCall(
           getChannel(), getInputDataMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public smartair.sensorService.getDataResponse getData(smartair.sensorService.getDataRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getGetDataMethod(), getCallOptions(), request);
     }
   }
 
@@ -199,9 +260,18 @@ public final class sensorServiceGrpc {
       return futureUnaryCall(
           getChannel().newCall(getInputDataMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<smartair.sensorService.getDataResponse> getData(
+        smartair.sensorService.getDataRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getGetDataMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_INPUT_DATA = 0;
+  private static final int METHODID_GET_DATA = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -223,6 +293,10 @@ public final class sensorServiceGrpc {
         case METHODID_INPUT_DATA:
           serviceImpl.inputData((smartair.sensorService.inputDataRequest) request,
               (io.grpc.stub.StreamObserver<smartair.sensorService.inputDataResponse>) responseObserver);
+          break;
+        case METHODID_GET_DATA:
+          serviceImpl.getData((smartair.sensorService.getDataRequest) request,
+              (io.grpc.stub.StreamObserver<smartair.sensorService.getDataResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -286,6 +360,7 @@ public final class sensorServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new sensorServiceFileDescriptorSupplier())
               .addMethod(getInputDataMethod())
+              .addMethod(getGetDataMethod())
               .build();
         }
       }

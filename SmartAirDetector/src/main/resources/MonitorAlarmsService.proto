@@ -10,7 +10,7 @@ option java_outer_classname = "monitorAlarmsServiceImpl";
 service monitorAlarmsService {
   
   rpc setThreshold(setThresholdRequest) returns (setThresholdResponse) {}
-  rpc startAlertMonitor() returns (alertMonitorResponse){}
+  rpc startAlertMonitor(setThresholdRequest) returns (alertMonitorResponse) {}
 }
 
 message setThresholdRequest {
@@ -26,5 +26,6 @@ message setThresholdResponse {
 }
 
 message alertMonitorResponse {
-String alertMessage = 1;
+
+  bool alertMessage = 1;
 }

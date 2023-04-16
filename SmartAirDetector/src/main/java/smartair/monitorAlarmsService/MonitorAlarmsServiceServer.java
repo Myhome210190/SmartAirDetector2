@@ -4,6 +4,7 @@ package smartair.monitorAlarmsService;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import smartair.dataAnalisysService.getDataResponse;
 import smartair.monitorAlarmsService.monitorAlarmsServiceGrpc.monitorAlarmsServiceImplBase;
 import smartair.monitorAlarmsService.TheMonitor;
 import io.grpc.Server;
@@ -57,6 +58,20 @@ public class MonitorAlarmsServiceServer extends monitorAlarmsServiceImplBase  {
 	     
 	     responseObserver.onCompleted();
 	}
+	
+	@Override
+	public void startAlertMonitor(setThresholdRequest request,  StreamObserver<alertMonitorResponse> responseObserver){
+		monitor.setThresholdCo(request.getThreshold());
+		getDataResponse dataresponse =  monitor.getDatafromserver();
+		 
+		alertMonitorResponse reply = alertMonitorResponse.newBuilder().setAlertMessage(monitor.checkLevels(dataresponse.getCoReading())).build();
+		responseObserver.onNext(reply);
+	     
+	    responseObserver.onCompleted();
+		
+	}
+	
+	
 	
   
 

@@ -24,6 +24,16 @@ public final class sensorServiceImpl {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_smartair_sensorService_inputDataResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_smartair_sensorService_getDataRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_smartair_sensorService_getDataRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_smartair_sensorService_getDataResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_smartair_sensorService_getDataResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -36,12 +46,16 @@ public final class sensorServiceImpl {
       "\n\023SensorService.proto\022\026smartair.sensorSe" +
       "rvice\"?\n\020inputDataRequest\022\030\n\020currentTime" +
       "Stamp\030\001 \001(\001\022\021\n\tcoReading\030\002 \001(\002\"*\n\021inputD" +
-      "ataResponse\022\025\n\rdataRegistred\030\001 \001(\0102s\n\rse" +
-      "nsorService\022b\n\tinputData\022(.smartair.sens" +
-      "orService.inputDataRequest\032).smartair.se" +
-      "nsorService.inputDataResponse\"\000B-\n\026smart" +
-      "air.sensorServiceB\021sensorServiceImplP\001b\006" +
-      "proto3"
+      "ataResponse\022\025\n\rdataRegistred\030\001 \001(\010\"#\n\016ge" +
+      "tDataRequest\022\021\n\ttimeStamp\030\001 \001(\001\";\n\017getDa" +
+      "taResponse\022\025\n\rfromTimeStamp\030\001 \001(\001\022\021\n\tcoR" +
+      "eading\030\002 \001(\0022\321\001\n\rsensorService\022b\n\tinputD" +
+      "ata\022(.smartair.sensorService.inputDataRe" +
+      "quest\032).smartair.sensorService.inputData" +
+      "Response\"\000\022\\\n\007getData\022&.smartair.sensorS" +
+      "ervice.getDataRequest\032\'.smartair.sensorS" +
+      "ervice.getDataResponse\"\000B-\n\026smartair.sen" +
+      "sorServiceB\021sensorServiceImplP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -67,6 +81,18 @@ public final class sensorServiceImpl {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_smartair_sensorService_inputDataResponse_descriptor,
         new java.lang.String[] { "DataRegistred", });
+    internal_static_smartair_sensorService_getDataRequest_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_smartair_sensorService_getDataRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_smartair_sensorService_getDataRequest_descriptor,
+        new java.lang.String[] { "TimeStamp", });
+    internal_static_smartair_sensorService_getDataResponse_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_smartair_sensorService_getDataResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_smartair_sensorService_getDataResponse_descriptor,
+        new java.lang.String[] { "FromTimeStamp", "CoReading", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

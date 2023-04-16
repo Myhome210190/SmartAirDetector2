@@ -62,6 +62,38 @@ public final class monitorAlarmsServiceGrpc {
      return getSetThresholdMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<smartair.monitorAlarmsService.setThresholdRequest,
+      smartair.monitorAlarmsService.alertMonitorResponse> getStartAlertMonitorMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "startAlertMonitor",
+      requestType = smartair.monitorAlarmsService.setThresholdRequest.class,
+      responseType = smartair.monitorAlarmsService.alertMonitorResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<smartair.monitorAlarmsService.setThresholdRequest,
+      smartair.monitorAlarmsService.alertMonitorResponse> getStartAlertMonitorMethod() {
+    io.grpc.MethodDescriptor<smartair.monitorAlarmsService.setThresholdRequest, smartair.monitorAlarmsService.alertMonitorResponse> getStartAlertMonitorMethod;
+    if ((getStartAlertMonitorMethod = monitorAlarmsServiceGrpc.getStartAlertMonitorMethod) == null) {
+      synchronized (monitorAlarmsServiceGrpc.class) {
+        if ((getStartAlertMonitorMethod = monitorAlarmsServiceGrpc.getStartAlertMonitorMethod) == null) {
+          monitorAlarmsServiceGrpc.getStartAlertMonitorMethod = getStartAlertMonitorMethod = 
+              io.grpc.MethodDescriptor.<smartair.monitorAlarmsService.setThresholdRequest, smartair.monitorAlarmsService.alertMonitorResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "smartair.monitorAlarmsService.monitorAlarmsService", "startAlertMonitor"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  smartair.monitorAlarmsService.setThresholdRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  smartair.monitorAlarmsService.alertMonitorResponse.getDefaultInstance()))
+                  .setSchemaDescriptor(new monitorAlarmsServiceMethodDescriptorSupplier("startAlertMonitor"))
+                  .build();
+          }
+        }
+     }
+     return getStartAlertMonitorMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -99,6 +131,13 @@ public final class monitorAlarmsServiceGrpc {
       asyncUnimplementedUnaryCall(getSetThresholdMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void startAlertMonitor(smartair.monitorAlarmsService.setThresholdRequest request,
+        io.grpc.stub.StreamObserver<smartair.monitorAlarmsService.alertMonitorResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(getStartAlertMonitorMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -108,6 +147,13 @@ public final class monitorAlarmsServiceGrpc {
                 smartair.monitorAlarmsService.setThresholdRequest,
                 smartair.monitorAlarmsService.setThresholdResponse>(
                   this, METHODID_SET_THRESHOLD)))
+          .addMethod(
+            getStartAlertMonitorMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                smartair.monitorAlarmsService.setThresholdRequest,
+                smartair.monitorAlarmsService.alertMonitorResponse>(
+                  this, METHODID_START_ALERT_MONITOR)))
           .build();
     }
   }
@@ -140,6 +186,14 @@ public final class monitorAlarmsServiceGrpc {
       asyncUnaryCall(
           getChannel().newCall(getSetThresholdMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void startAlertMonitor(smartair.monitorAlarmsService.setThresholdRequest request,
+        io.grpc.stub.StreamObserver<smartair.monitorAlarmsService.alertMonitorResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getStartAlertMonitorMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -168,6 +222,13 @@ public final class monitorAlarmsServiceGrpc {
     public smartair.monitorAlarmsService.setThresholdResponse setThreshold(smartair.monitorAlarmsService.setThresholdRequest request) {
       return blockingUnaryCall(
           getChannel(), getSetThresholdMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public smartair.monitorAlarmsService.alertMonitorResponse startAlertMonitor(smartair.monitorAlarmsService.setThresholdRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getStartAlertMonitorMethod(), getCallOptions(), request);
     }
   }
 
@@ -199,9 +260,18 @@ public final class monitorAlarmsServiceGrpc {
       return futureUnaryCall(
           getChannel().newCall(getSetThresholdMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<smartair.monitorAlarmsService.alertMonitorResponse> startAlertMonitor(
+        smartair.monitorAlarmsService.setThresholdRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getStartAlertMonitorMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_SET_THRESHOLD = 0;
+  private static final int METHODID_START_ALERT_MONITOR = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -223,6 +293,10 @@ public final class monitorAlarmsServiceGrpc {
         case METHODID_SET_THRESHOLD:
           serviceImpl.setThreshold((smartair.monitorAlarmsService.setThresholdRequest) request,
               (io.grpc.stub.StreamObserver<smartair.monitorAlarmsService.setThresholdResponse>) responseObserver);
+          break;
+        case METHODID_START_ALERT_MONITOR:
+          serviceImpl.startAlertMonitor((smartair.monitorAlarmsService.setThresholdRequest) request,
+              (io.grpc.stub.StreamObserver<smartair.monitorAlarmsService.alertMonitorResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -286,6 +360,7 @@ public final class monitorAlarmsServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new monitorAlarmsServiceFileDescriptorSupplier())
               .addMethod(getSetThresholdMethod())
+              .addMethod(getStartAlertMonitorMethod())
               .build();
         }
       }
