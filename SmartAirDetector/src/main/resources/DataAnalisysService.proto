@@ -1,0 +1,28 @@
+syntax = "proto3";
+package smartair.dataAnalisysService;
+
+option java_multiple_files = true;
+option java_package = "smartair.dataAnalisysService";
+option java_outer_classname = "dataAnalisysServiceImpl";
+
+
+// Interface exported by the server.
+service dataAnalisysService {
+  
+  rpc getData(getDataRequest) returns (getDataResponse) {}
+    
+}
+
+message getDataRequest {
+  //time of data detection
+  double timeStamp = 1;  
+}
+
+message getDataResponse {
+  //last timestamp of data 
+  double fromTimeStamp = 1;
+  //current timestamp of data
+  double currentTimeStamp = 2;
+  //COemission detected
+  float coReading = 3; 
+}

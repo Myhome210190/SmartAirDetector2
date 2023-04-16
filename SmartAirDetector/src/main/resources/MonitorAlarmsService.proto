@@ -1,0 +1,30 @@
+syntax = "proto3";
+package smartair.monitorAlarmsService;
+
+option java_multiple_files = true;
+option java_package = "smartair.monitorAlarmsService";
+option java_outer_classname = "monitorAlarmsServiceImpl";
+
+
+// Interface exported by the server.
+service monitorAlarmsService {
+  
+  rpc setThreshold(setThresholdRequest) returns (setThresholdResponse) {}
+  rpc startAlertMonitor() returns (alertMonitorResponse){}
+}
+
+message setThresholdRequest {
+  
+  float threshold = 1;  
+}
+
+
+message setThresholdResponse {
+  
+  bool thresholdSet = 1;
+  
+}
+
+message alertMonitorResponse {
+String alertMessage = 1;
+}

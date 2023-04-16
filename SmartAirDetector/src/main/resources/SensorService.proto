@@ -1,0 +1,28 @@
+syntax = "proto3";
+package smartair.sensorService;
+
+option java_multiple_files = true;
+option java_package = "smartair.sensorService";
+option java_outer_classname = "sensorServiceImpl";
+
+
+// Interface exported by the server.
+service sensorService {
+  
+  rpc inputData(inputDataRequest) returns (inputDataResponse) {}
+    
+}
+
+message inputDataRequest {
+ 
+  //current timestamp of data
+  double currentTimeStamp = 1;
+  //COemission detected
+  float coReading = 2; 
+}
+
+
+
+message inputDataResponse {
+  bool dataRegistred = 1;
+}
